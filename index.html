@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Great Western Building Systems </title>
+</head>
+<body>
+  <div id="Integers">
+    <form id="sortIntegerForm">
+      <input type="text" placeholder="" id="integerInput"/>
+      <input type="submit" value="Submit"/>
+    </form>
+  </div>
+</body>
+<script>
+document.getElementById('sortIntegerForm').addEventListener("submit", function(event){
+  // I do not want the page to reload, so I prevent the default
+  event.preventDefault();
+
+  // grab the input value
+  const stringInput = document.getElementById("integerInput").value;
+
+  // split the string by commas, since the input is of type text, and must be this way
+  // according to the scope of the problem
+  const stringArray = stringInput.split(',');  
+
+  // I want to create a new array of integers, so that it can be sorted
+  const integerArray = stringArray.map((string) => {
+    return(parseInt(string))
+  })
+    
+  // sort the array from greatest to least
+  const sortedIntegerArray = integerArray.sort((a, b) => {
+    return a - b;
+  });
+
+  // replace the inside of the div with a string of my sorted array seperated by commas
+  document.getElementById("Integers").innerHTML = sortedIntegerArray.join(',')
+  });  
+</script>
+</html>
